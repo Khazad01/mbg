@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="id">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MBG Dashboard</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="logo">MBG<span>SMAGA</span></div></div>
+  <div style="margin-left:auto;display:flex;align-items:center;gap:12px;padding-right:18px">
+    <div id="userInfo" class="muted"></div>
+    <button id="logout" class="btn outline">Logout</button>
+  </div>
+</header>
+
+<main class="container" style="max-width:1200px;margin:24px auto;padding:0 18px">
+  <div style="display:grid;grid-template-columns:260px 1fr;gap:18px">
+    <aside class="card" style="padding:12px">
+      <div id="avatar" style="width:100%;display:flex;gap:12px;align-items:center">
+        <div style="width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--blue-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:20px" id="avatarInitial">A</div>
+        <div>
+          <div id="name">User</div>
+          <div id="role" class="muted"></div>
+        </div>
+      </div>
+      <hr style="margin:12px 0;border:none;border-top:1px solid #eef6ff">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <button id="btnDash" class="btn">Dashboard</button>
+        <button id="btnAbs" class="btn">Absensi</button>
+        <button id="btnReport" class="btn">Laporan</button>
+      </div>
+    </aside>
+
+    <section class="card" id="mainContent">
+      <div id="viewDash">
+        <h2>Ringkasan - <span id="todayLabel" class="muted"></span></h2>
+        <div id="kpi" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px"></div>
+      </div>
+
+      <div id="viewAbs" style="display:none">
+        <h2>Absensi</h2>
+        <form id="absForm" style="display:grid;grid-template-columns:1fr 220px;gap:12px;align-items:end">
+          <div>
+            <label>Pilih Kelas
+              <select id="classSelect"></select>
+            </label>
+          </div>
+          <div>
+            <label>Tanggal
+              <input type="date" id="attDate" class="dateInput"> <span id="todayLabel"></span>
+            </label>
+          </div>
+          <div style="grid-column:1/-1">
+            <small class="muted">Centang siswa yang hadir (1..36). Nomor hanya 1..36, tidak double.</small>
+          </div>
+          <div id="gridBox" style="grid-column:1/-1"></div>
+          <div style="grid-column:1/-1;display:flex;gap:8px;justify-content:flex-end">
+            <button id="saveAbs" class="btn primary" type="button">Submit</button>
+            <button id="clearAbs" class="btn outline" type="button">Reset</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="viewReport" style="display:none">
+        <h2>Laporan</h2>
+        <table class="table" id="reportTable"><thead><tr><th>Kelas</th><th>Tanggal</th><th>Masuk</th><th>Total</th></tr></thead><tbody></tbody></table>
+      </div>
+
+    </section>
+  </div>
+</main>
+
+<script src="dashboard.js"></script>
+</body>
+</html>
